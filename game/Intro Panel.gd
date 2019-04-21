@@ -1,15 +1,11 @@
 extends Panel
 
-var ticks = 0
+signal game_start
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Button.connect("pressed", self, "_on_button_pressed")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
+var ticks = 0
 
 func _on_Timer_timeout():
 	ticks+=1
@@ -19,3 +15,6 @@ func _on_Timer_timeout():
 		$icon.visible = true
 	if ticks == 3:
 		$Button.visible = true
+		
+func _on_button_pressed():
+	emit_signal("game_start")
