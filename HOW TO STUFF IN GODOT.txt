@@ -1,0 +1,16 @@
+Acá voy guardando como hice algunas cosas que no son tan obvias o que son de configuraciones
+
+
+
+- Como cargar fonts TTF https://godotengine.org/qa/20870/how-do-you-bring-fonts-into-godot-3-0
+
+- 
+
+
+
+
+
+
+
+
+Algunos nombres de gente que hace tutoriales GDquest, KidsCanCode, HeartBeast and Gamesfromscratch
