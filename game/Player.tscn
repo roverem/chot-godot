@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/sprites/goblin_attack_001.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/goblin_attack_002.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/goblin_attack_003.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "right",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 40.5162
+
+[node name="Player" type="Area2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+animation = "right"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.76001, 6.34668 )
+shape = SubResource( 2 )
+
