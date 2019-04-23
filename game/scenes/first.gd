@@ -1,6 +1,8 @@
 extends Node2D
 
-var player_scene = preload("res://Player.tscn")
+signal game_start_2
+
+var player_scene = preload("res://scenes/Player.tscn")
 var player
 
 func _ready():
@@ -19,4 +21,10 @@ func _process(delta):
 		if player.position.x < 403:
 			player.position.x = 403
 			player.get_node("AnimatedSprite").play("shoot")
+			
+			$Timer.connect("timeout", self, "_on_Timer_timeout")
+			$Timer.start()
+			
+func _on_Timer_timeout():
+	emit_signal("game_start_2")
 	
