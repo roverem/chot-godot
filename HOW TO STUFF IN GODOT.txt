@@ -14,3 +14,5 @@ Acá voy guardando como hice algunas cosas que no son tan obvias o que son de co
 
 
 Algunos nombres de gente que hace tutoriales GDquest, KidsCanCode, HeartBeast and Gamesfromscratch
+
+https://gdscript.com/tutorials
