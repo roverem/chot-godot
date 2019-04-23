@@ -12,7 +12,8 @@ func _ready():
 	backgrounds = [map_A, map_B]
 	
 	#DEBERIA LLEGAR ESTE DATO DEL MAIN
-	var i = 0
+	
+	var i = randi() % backgrounds.size()
 	var b = backgrounds[i].instance()
 	add_child(b)
 	
