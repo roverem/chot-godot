@@ -4,11 +4,8 @@ Acá voy guardando como hice algunas cosas que no son tan obvias o que son de co
 
 - Como cargar fonts TTF https://godotengine.org/qa/20870/how-do-you-bring-fonts-into-godot-3-0
 
-- 
-
-
-
-
+- Levante un GameState llamando a una escena class_name ClassName https://gdscript.com/classes 
+- luego accedi a constantes de la misma y a un objeto custom https://gdscript.com/dictionaries
 
 
 
