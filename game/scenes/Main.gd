@@ -8,12 +8,24 @@ var intro_scene
 var map_scene
 var level_scene
 
+var game_state
+
+
 func _ready():
+	game_state = GameState.new()
+	
+	game_state.connect("ready", self, "_on_game_state_ready")
+	
+	add_child(game_state)
+	
 	intro_scene = Intro.instance()
 	add_child(intro_scene)
 	
-	intro_scene.get_node("Intro Panel").connect("game_start", self, "_on_game_start")
+	intro_scene.get_node("Intro Panel").connect("game_start", self, "_on_game_state_ready")
 
+func _on_game_state_ready():
+	if game_state.data["state"] == GameState.ACQUIRING_MISSION:
+		print( "ACQUIRING_MISSION" )
 
 func _on_game_start():
 	intro_scene.queue_free()
