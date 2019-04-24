@@ -13,9 +13,7 @@ var game_state
 
 func _ready():
 	game_state = GameState.new()
-	
 	game_state.connect("ready", self, "_on_game_state_ready")
-	
 	add_child(game_state)
 	
 	intro_scene = Intro.instance()
@@ -35,7 +33,6 @@ func _on_game_start():
 	
 	map_scene.connect("map_button_A_pressed", self, "_on_map_button_A_pressed")
 	map_scene.connect("map_button_B_pressed", self, "_on_map_button_B_pressed")
-	
 	
 	
 func _on_map_button_A_pressed():
