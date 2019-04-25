@@ -17,5 +17,6 @@ func _ready():
 	$TileMap.update_bitmask_region()
 	
 	
+	
 func _get_tile_index(noise_sample):
-		return abs(int(noise_sample * 10))
+		return abs(int(noise_sample * 10) / 2)
