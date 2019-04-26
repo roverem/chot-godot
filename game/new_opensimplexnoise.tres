@@ -2,8 +2,7 @@
 
 [resource]
 seed = 55
-octaves = 5
-period = 84.5
-persistence = 0.197
-lacunarity = 2.64
+period = 92.0
+persistence = 0.312
+lacunarity = 1.02
 
