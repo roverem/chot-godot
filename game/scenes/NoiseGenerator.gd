@@ -1,17 +1,26 @@
 tool
-extends Node2D
+extends TileMap
 
-const WIDTH = 500
-const HEIGHT = 500
+export (int) var WIDTH = 126 setget setDimension_x
+export (int) var HEIGHT = 74 setget setDimension_y
 
-export (int) var noise_seed = 0 setget setSeed
-export (int) var noise_octaves = 1 setget setOctaves
-export (float) var noise_period = 1 setget setPeriod
-export (float) var noise_persistence = 1 setget setPersistence
-export (float) var noise_lacunarity = 1 setget setLacunarity
+export (int, 256) var noise_seed = 0 setget setSeed
+export (int, 6) var noise_octaves = 4 setget setOctaves
+export (float, 256) var noise_period = 35 setget setPeriod
+export (float, 1) var noise_persistence = 20 setget setPersistence
+export (float, 4) var noise_lacunarity = 1 setget setLacunarity
 
 var open_simplex_noise = OpenSimplexNoise.new()
 
+func setDimension_x(newValue):
+	if Engine.is_editor_hint():
+		WIDTH = newValue
+		_draw_map()
+		
+func setDimension_y(newValue):
+	if Engine.is_editor_hint():
+		HEIGHT = newValue
+		_draw_map()
 
 func setSeed(newSeed):
 	if Engine.is_editor_hint():
@@ -53,19 +62,28 @@ func setLacunarity(newLacunarity):
 func _ready():
 	randomize()
 	print("_READY")
+	print()
 	open_simplex_noise = OpenSimplexNoise.new()
 	_draw_map()
 
 
 func _draw_map():
+	print("CLEARING MAP")
+	clear()
 	print("DRAWING MAP")
 	for x in WIDTH:
 		for y in HEIGHT:
-			var v = Vector2(x - WIDTH / 2, y - HEIGHT / 2)
+			var v = Vector2(x, y)
 			var t = _get_tile_index(open_simplex_noise.get_noise_2d(float(x), float(y)))
-			$TileMap.set_cellv(v, t)
-			
-	$TileMap.update_bitmask_region()
+			set_cellv(v, t)
+	
+	noise_seed = open_simplex_noise.seed
+	noise_octaves = open_simplex_noise.octaves
+	noise_period = open_simplex_noise.period
+	noise_persistence = open_simplex_noise.persistence
+	noise_lacunarity = open_simplex_noise.lacunarity
+	
+	update_bitmask_region()
 
 func _get_tile_index(noise_sample):
 		return abs(int(noise_sample * 10) / 2)

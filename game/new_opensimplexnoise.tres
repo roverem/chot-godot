@@ -2,7 +2,7 @@
 
 [resource]
 seed = 55
-period = 92.0
-persistence = 0.312
-lacunarity = 1.02
+period = 0.1
+persistence = 0.0
+lacunarity = 0.1
 
