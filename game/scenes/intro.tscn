@@ -35,5 +35,4 @@ margin_right = 715.633
 margin_bottom = 558.176
 custom_fonts/font = ExtResource( 2 )
 text = "COMENZAR"
-
 [connection signal="timeout" from="Intro Panel/Timer" to="Intro Panel" method="_on_Timer_timeout"]

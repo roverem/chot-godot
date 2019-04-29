@@ -10,6 +10,18 @@ export (float, 256) var noise_period = 35 setget setPeriod
 export (float, 1) var noise_persistence = 20 setget setPersistence
 export (float, 4) var noise_lacunarity = 1 setget setLacunarity
 
+
+#Se puede agregar regiones al tileset 
+#para que autocomplete regiones 
+#(patches de tierra o agua).
+
+#Buscar si se puede implementar
+#que use ese autocomplete con procedural.
+
+
+#Basicamente esto, que por lo que veo desaparecio en el editor 3.1?
+#https://www.youtube.com/watch?v=F6VerW98gEc&t=317s
+
 var open_simplex_noise = OpenSimplexNoise.new()
 
 func setDimension_x(newValue):
