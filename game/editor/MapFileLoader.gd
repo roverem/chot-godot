@@ -34,3 +34,10 @@ func _on_tile_set_room(current_grid_coord, level_name, north_door, east_door, we
 	_map_file.set_value(section, "W", west_door)
 	_map_file.set_value(section, "S", south_door)
 	_map_file.save(SAVE_PATH)
+	
+func _on_tile_delete_room(current_grid_coord):
+	var section = "grid:" + str(current_grid_coord.x) + "," + str(current_grid_coord.y)
+	_map_file.erase_section(section)
+	_map_file.save(SAVE_PATH)
+	
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://editor/Main.gd" type="Script" id=1]
 [ext_resource path="res://editor/0.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://editor/TileMap.gd" type="Script" id=5]
 [ext_resource path="res://editor/selector.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=7]
+[ext_resource path="res://editor/compass.png" type="Texture" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -75,11 +76,14 @@ tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
 
+[node name="Directions" type="Node2D" parent="TileMap"]
+
 [node name="Selector" type="Sprite" parent="TileMap"]
 texture = ExtResource( 6 )
 offset = Vector2( 32, 32 )
 
 [node name="Properties" type="Panel" parent="TileMap"]
+editor/display_folded = true
 margin_left = 684.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -90,25 +94,25 @@ margin_top = 182.673
 margin_right = 319.404
 margin_bottom = 211.673
 
-[node name="North_Door" type="LineEdit" parent="TileMap/Properties"]
+[node name="North_Door" type="CheckBox" parent="TileMap/Properties"]
 margin_left = 122.404
 margin_top = 222.673
 margin_right = 321.404
 margin_bottom = 246.673
 
-[node name="West_Door" type="LineEdit" parent="TileMap/Properties"]
+[node name="West_Door" type="CheckBox" parent="TileMap/Properties"]
 margin_left = 121.706
 margin_top = 256.193
 margin_right = 320.706
 margin_bottom = 280.193
 
-[node name="East_Door" type="LineEdit" parent="TileMap/Properties"]
+[node name="East_Door" type="CheckBox" parent="TileMap/Properties"]
 margin_left = 122.404
 margin_top = 288.317
 margin_right = 321.404
 margin_bottom = 312.317
 
-[node name="South_Door" type="LineEdit" parent="TileMap/Properties"]
+[node name="South_Door" type="CheckBox" parent="TileMap/Properties"]
 margin_left = 124.499
 margin_top = 321.837
 margin_right = 323.499
@@ -157,13 +161,27 @@ margin_bottom = 147.752
 text = "TILE PROPERTIES"
 
 [node name="save_button" type="Button" parent="TileMap/Properties"]
-margin_left = 91.3011
-margin_top = 559.933
-margin_right = 226.301
-margin_bottom = 581.933
+margin_left = 91.0
+margin_top = 528.0
+margin_right = 226.0
+margin_bottom = 581.0
 text = "SAVE"
 
-[node name="Label" type="Label" parent="."]
+[node name="delete_button" type="Button" parent="TileMap/Properties"]
+margin_left = 235.379
+margin_top = 527.772
+margin_right = 292.379
+margin_bottom = 579.772
+text = "DELETE"
+
+[node name="launch_game_button" type="Button" parent="TileMap"]
+margin_left = 774.0
+margin_top = 442.0
+margin_right = 976.0
+margin_bottom = 517.0
+text = "LAUNCH GAME"
+
+[node name="Comment" type="Label" parent="."]
 margin_left = -55.6506
 margin_top = -121.901
 margin_right = 994.349
@@ -171,3 +189,8 @@ margin_bottom = -71.9015
 custom_fonts/font = ExtResource( 7 )
 text = "( COMENTARIOS EN 
   LA FUNCION READY )"
+
+[node name="compass" type="Sprite" parent="."]
+position = Vector2( 125.45, 480.261 )
+scale = Vector2( 2.42004, 2.42004 )
+texture = ExtResource( 8 )

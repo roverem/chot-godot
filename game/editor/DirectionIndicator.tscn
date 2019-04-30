@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://editor/DirectionIndicator.gd" type="Script" id=1]
+[ext_resource path="res://editor/tile_bg_arrow.png" type="Texture" id=2]
+[ext_resource path="res://editor/tile_down_arrow.png" type="Texture" id=3]
+[ext_resource path="res://editor/tile_up_arrow.png" type="Texture" id=4]
+[ext_resource path="res://editor/tile_right_arrow.png" type="Texture" id=5]
+[ext_resource path="res://editor/tile_left_arrow.png" type="Texture" id=6]
+
+[node name="Directions" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 31.9588, 32.0697 )
+texture = ExtResource( 2 )
+
+[node name="arrow_south" type="Sprite" parent="."]
+position = Vector2( 32.2242, 32.128 )
+texture = ExtResource( 3 )
+
+[node name="arrow_north" type="Sprite" parent="."]
+position = Vector2( 32.2242, 32.128 )
+texture = ExtResource( 4 )
+
+[node name="arrow_east" type="Sprite" parent="."]
+position = Vector2( 32.2242, 32.128 )
+texture = ExtResource( 5 )
+
+[node name="arrow_west" type="Sprite" parent="."]
+position = Vector2( 32.2242, 32.128 )
+texture = ExtResource( 6 )
