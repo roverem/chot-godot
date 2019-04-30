@@ -191,6 +191,6 @@ text = "( COMENTARIOS EN
   LA FUNCION READY )"
 
 [node name="compass" type="Sprite" parent="."]
-position = Vector2( 125.45, 480.261 )
-scale = Vector2( 2.42004, 2.42004 )
+position = Vector2( 71.4883, 536.381 )
+scale = Vector2( 1.67807, 1.67807 )
 texture = ExtResource( 8 )
