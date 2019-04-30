@@ -14,6 +14,11 @@ func _ready():
 	HEIGHT = MapFileLoader._map_file.get_value("grid_size", "y")
 	
 	#Inicializar todos los tiles que tengan data
+	for x in range(WIDTH):
+		for y in range(HEIGHT):
+			var section = "grid:" + str(x) + "," + str(y)
+			if (MapFileLoader._map_file.has_section_key(section, "name")):
+				set_cellv(Vector2(x,y), 0)
 	
 	$Properties/save_button.connect("button_down", self, "_on_save_button")
 	
@@ -75,6 +80,8 @@ func _load_panel_info(coord):
 	
 
 func _on_save_button():
+	set_cellv(Vector2(current_grid_coord.x, current_grid_coord.y), 0)
+	
 	var level_name = $Properties/Level_Name.get_text()
 	var north_door = $Properties/North_Door.get_text()
 	var east_door = $Properties/East_Door.get_text()
