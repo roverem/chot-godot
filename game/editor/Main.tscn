@@ -79,6 +79,90 @@ script = ExtResource( 5 )
 texture = ExtResource( 6 )
 offset = Vector2( 32, 32 )
 
+[node name="Properties" type="Panel" parent="TileMap"]
+margin_left = 684.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Level_Name" type="LineEdit" parent="TileMap/Properties"]
+margin_left = 119.404
+margin_top = 182.673
+margin_right = 319.404
+margin_bottom = 211.673
+
+[node name="North_Door" type="LineEdit" parent="TileMap/Properties"]
+margin_left = 122.404
+margin_top = 222.673
+margin_right = 321.404
+margin_bottom = 246.673
+
+[node name="West_Door" type="LineEdit" parent="TileMap/Properties"]
+margin_left = 121.706
+margin_top = 256.193
+margin_right = 320.706
+margin_bottom = 280.193
+
+[node name="East_Door" type="LineEdit" parent="TileMap/Properties"]
+margin_left = 122.404
+margin_top = 288.317
+margin_right = 321.404
+margin_bottom = 312.317
+
+[node name="South_Door" type="LineEdit" parent="TileMap/Properties"]
+margin_left = 124.499
+margin_top = 321.837
+margin_right = 323.499
+margin_bottom = 345.837
+
+[node name="level_label" type="Label" parent="TileMap/Properties"]
+margin_left = 20.4676
+margin_top = 190.7
+margin_right = 96.4676
+margin_bottom = 204.7
+text = "LevelName:"
+
+[node name="north_label" type="Label" parent="TileMap/Properties"]
+margin_left = 16.7921
+margin_top = 227.455
+margin_right = 111.792
+margin_bottom = 241.455
+text = "HasDoorNorth:"
+
+[node name="west_label" type="Label" parent="TileMap/Properties"]
+margin_left = 18.4036
+margin_top = 261.673
+margin_right = 113.404
+margin_bottom = 275.673
+text = "HasDoorWest:"
+
+[node name="east_label" type="Label" parent="TileMap/Properties"]
+margin_left = 19.2356
+margin_top = 292.615
+margin_right = 114.236
+margin_bottom = 306.615
+text = "HasDoorEast:"
+
+[node name="south_label" type="Label" parent="TileMap/Properties"]
+margin_left = 19.2356
+margin_top = 325.195
+margin_right = 114.236
+margin_bottom = 339.195
+text = "HasDoorSouth:"
+
+[node name="description" type="Label" parent="TileMap/Properties"]
+margin_left = 97.9394
+margin_top = 133.752
+margin_right = 173.939
+margin_bottom = 147.752
+text = "TILE PROPERTIES"
+
+[node name="save_button" type="Button" parent="TileMap/Properties"]
+margin_left = 91.3011
+margin_top = 559.933
+margin_right = 226.301
+margin_bottom = 581.933
+text = "SAVE"
+
 [node name="Label" type="Label" parent="."]
 margin_left = -55.6506
 margin_top = -121.901
