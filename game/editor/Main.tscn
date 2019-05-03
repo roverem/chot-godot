@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://editor/Main.gd" type="Script" id=1]
 [ext_resource path="res://editor/0.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://editor/selector.png" type="Texture" id=6]
 [ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=7]
 [ext_resource path="res://editor/compass.png" type="Texture" id=8]
+[ext_resource path="res://editor/PortalEditor.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -72,6 +73,7 @@
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
@@ -83,7 +85,6 @@ texture = ExtResource( 6 )
 offset = Vector2( 32, 32 )
 
 [node name="Properties" type="Panel" parent="TileMap"]
-editor/display_folded = true
 margin_left = 684.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -174,11 +175,28 @@ margin_right = 292.379
 margin_bottom = 579.772
 text = "DELETE"
 
+[node name="edit_portals_button" type="Button" parent="TileMap/Properties"]
+margin_left = 91.0
+margin_top = 470.415
+margin_right = 291.0
+margin_bottom = 522.415
+disabled = true
+text = "EDIT PORTALS"
+
+[node name="error_message" type="Label" parent="TileMap/Properties"]
+margin_left = 22.0
+margin_top = 38.0
+margin_right = 318.0
+margin_bottom = 66.0
+custom_colors/font_color = Color( 0.937255, 0.0509804, 0.0509804, 1 )
+text = "ERROR: SCENE DOESN'T EXIST"
+autowrap = true
+
 [node name="launch_game_button" type="Button" parent="TileMap"]
-margin_left = 774.0
-margin_top = 442.0
-margin_right = 976.0
-margin_bottom = 517.0
+margin_left = 775.0
+margin_top = 402.0
+margin_right = 974.0
+margin_bottom = 464.0
 text = "LAUNCH GAME"
 
 [node name="Comment" type="Label" parent="."]
@@ -194,3 +212,6 @@ text = "( COMENTARIOS EN
 position = Vector2( 71.4883, 536.381 )
 scale = Vector2( 1.67807, 1.67807 )
 texture = ExtResource( 8 )
+
+[node name="PortalEditor" type="Node2D" parent="."]
+script = ExtResource( 9 )

@@ -2,8 +2,6 @@ extends Node
 
 const SAVE_PATH = "res://editor/map.cfg"
 
-signal map_ready
-
 var _map_file = ConfigFile.new()
 
 var _initData = {

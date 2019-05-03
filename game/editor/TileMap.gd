@@ -1,12 +1,12 @@
 tool
 extends TileMap
 
-signal custom
-
 var WIDTH
 var HEIGHT
 var current_grid_coord
 var direction_indicator= load("res://editor/DirectionIndicator.tscn")
+
+signal openPortalEditor(SceneToEdit)
 
 func _ready():
 	
@@ -27,12 +27,15 @@ func _ready():
 	
 	$Properties/save_button.connect("button_down", self, "_on_save_button")
 	$Properties/delete_button.connect("button_down", self, "_on_delete_button")
-	$launch_game_button
+	$Properties/edit_portals_button.connect("button_down", self, "_on_edit_portals_button")
+	$launch_game_button.connect("button_down", self, "_on_button_launch_game")
 	
 	$Properties/North_Door.set_text( "False" )
 	$Properties/East_Door.set_text( "False" )
 	$Properties/West_Door.set_text( "False" )
 	$Properties/South_Door.set_text( "False" ) 
+	
+	$Properties/error_message.visible = false;
 	
 	#CARGAR LA INFO DEL 0,0
 	_load_panel_info(Vector2(0,0))
@@ -53,6 +56,8 @@ func _input(event):
 		var mouse_position= get_viewport().get_mouse_position()
 		var old_current_grid= current_grid_coord
 		current_grid_coord= world_to_map(mouse_position)
+		
+		$Properties/error_message.visible = false;
 		
 		if (current_grid_coord.x > WIDTH or current_grid_coord.y > HEIGHT):
 			current_grid_coord= old_current_grid
@@ -106,6 +111,7 @@ func _load_panel_info(coord):
 
 	if (not MapFileLoader._map_file.has_section_key(section, "name")):
 		$Properties/Level_Name.set_text( "Default" )
+		$Properties/edit_portals_button.set_disabled(true)
 		refresh_directions()
 		return
 	
@@ -114,6 +120,8 @@ func _load_panel_info(coord):
 	set_portal_direction($Properties/East_Door, bool(MapFileLoader._map_file.get_value(section, "E") ) )
 	set_portal_direction($Properties/West_Door, bool(MapFileLoader._map_file.get_value(section, "W") ) )
 	set_portal_direction($Properties/South_Door, bool(MapFileLoader._map_file.get_value(section, "S") ) )
+	$Properties/edit_portals_button.set_disabled(false)
+	
 	
 func _on_delete_button():
 	set_cellv(Vector2(current_grid_coord.x, current_grid_coord.y), -1)
@@ -143,3 +151,22 @@ func _on_save_button():
 	
 	print("saving on: ", current_grid_coord)
 	MapFileLoader._on_tile_set_room(current_grid_coord, level_name, north_door, east_door, west_door, south_door)
+	
+func _on_button_launch_game():
+	print("LAUNCH GAME")
+	var pack = preload("res://scenes/MapEditor.tscn")
+	var scene = pack.instance()
+	get_tree().get_root().add_child(scene)
+	get_parent().queue_free()
+	
+
+func _on_edit_portals_button():
+	var sceneName = $Properties/Level_Name.get_text()
+	var sceneRes = load("res://scenes/levels/" + sceneName + ".tscn")
+	if not sceneRes:
+		$Properties/error_message.visible = true;
+	else:
+		emit_signal("openPortalEditor", sceneRes)
+		
+		
+		
