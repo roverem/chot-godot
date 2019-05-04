@@ -6,9 +6,9 @@
 [ext_resource path="res://editor/2.png" type="Texture" id=4]
 [ext_resource path="res://editor/TileMap.gd" type="Script" id=5]
 [ext_resource path="res://editor/selector.png" type="Texture" id=6]
-[ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=7]
+[ext_resource path="res://editor/PortalEditor.gd" type="Script" id=7]
 [ext_resource path="res://editor/compass.png" type="Texture" id=8]
-[ext_resource path="res://editor/PortalEditor.gd" type="Script" id=9]
+[ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=9]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -199,19 +199,28 @@ margin_right = 974.0
 margin_bottom = 464.0
 text = "LAUNCH GAME"
 
-[node name="Comment" type="Label" parent="."]
-margin_left = -55.6506
-margin_top = -121.901
-margin_right = 994.349
-margin_bottom = -71.9015
-custom_fonts/font = ExtResource( 7 )
-text = "( COMENTARIOS EN 
-  LA FUNCION READY )"
+[node name="PortalEditor" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
-[node name="compass" type="Sprite" parent="."]
+[node name="close_button" type="Button" parent="PortalEditor"]
+margin_left = 768.309
+margin_top = 54.0681
+margin_right = 996.309
+margin_bottom = 120.068
+text = "CLOSE PORTAL EDITOR"
+
+[node name="Others" type="Node" parent="."]
+
+[node name="compass" type="Sprite" parent="Others"]
 position = Vector2( 71.4883, 536.381 )
 scale = Vector2( 1.67807, 1.67807 )
 texture = ExtResource( 8 )
 
-[node name="PortalEditor" type="Node2D" parent="."]
-script = ExtResource( 9 )
+[node name="Comment" type="Label" parent="Others"]
+margin_left = -55.6506
+margin_top = -121.901
+margin_right = 994.349
+margin_bottom = -18.901
+custom_fonts/font = ExtResource( 9 )
+text = "( COMENTARIOS EN 
+  LA FUNCION READY )"
