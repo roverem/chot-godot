@@ -5,24 +5,24 @@ var HEIGHT
 var current_grid_coord
 var direction_indicator= load("res://editor/DirectionIndicator.tscn")
 
-signal openPortalEditor(SceneToEdit)
+signal openPortalEditor(sceneCoord, sceneName, sceneToEdit)
 
 func _ready():
 	
-	WIDTH = MapFileLoader._map_file.get_value("grid_size", "x")
-	HEIGHT = MapFileLoader._map_file.get_value("grid_size", "y")
+	WIDTH = MapFileLoader._get_value("grid_size", "x")
+	HEIGHT = MapFileLoader._get_value("grid_size", "y")
 	
 	#Inicializar todos los tiles que tengan data
 	for x in range(WIDTH):
 		for y in range(HEIGHT):
 			var section = "grid:" + str(x) + "," + str(y)
-			if (MapFileLoader._map_file.has_section_key(section, "name")):
+			if (MapFileLoader._has_section_key(section, "name")):
 				set_cellv(Vector2(x,y), 0)
 				_set_direction_tile( Vector2(x,y), 
-					bool(MapFileLoader._map_file.get_value(section, "N") ),
-					bool(MapFileLoader._map_file.get_value(section, "S") ),
-					bool(MapFileLoader._map_file.get_value(section, "E") ),
-					bool(MapFileLoader._map_file.get_value(section, "W") ))
+					bool(MapFileLoader._get_value(section, "N") ),
+					bool(MapFileLoader._get_value(section, "S") ),
+					bool(MapFileLoader._get_value(section, "E") ),
+					bool(MapFileLoader._get_value(section, "W") ))
 	
 	$Properties/save_button.connect("button_down", self, "_on_save_button")
 	$Properties/delete_button.connect("button_down", self, "_on_delete_button")
@@ -69,11 +69,6 @@ func _input(event):
 		
 		_load_panel_info(current_grid_coord)
 		
-		#var cell= get_cell(current_grid_coord.x, current_grid_coord.y)
-		#if cell != -1 and cell < tile_set.get_tiles_ids().size()-1:
-		#	cell+= 1
-		#else:
-		#	cell= 0
 		
 func _set_direction_tile(v, n, s, e, w):
 	var node_name = str(v.x) + "," + str(v.y)
@@ -108,17 +103,17 @@ func _load_panel_info(coord):
 	print("_load_panel_info: ", coord)
 	var section = "grid:" + str(coord.x) + "," + str(coord.y)
 
-	if (not MapFileLoader._map_file.has_section_key(section, "name")):
+	if (not MapFileLoader._has_section_key(section, "name")):
 		$Properties/Level_Name.set_text( "Default" )
 		$Properties/edit_portals_button.set_disabled(true)
 		refresh_directions()
 		return
 	
-	$Properties/Level_Name.set_text( MapFileLoader._map_file.get_value(section, "name") )
-	set_portal_direction($Properties/North_Door, bool(MapFileLoader._map_file.get_value(section, "N") ) ) 
-	set_portal_direction($Properties/East_Door, bool(MapFileLoader._map_file.get_value(section, "E") ) )
-	set_portal_direction($Properties/West_Door, bool(MapFileLoader._map_file.get_value(section, "W") ) )
-	set_portal_direction($Properties/South_Door, bool(MapFileLoader._map_file.get_value(section, "S") ) )
+	$Properties/Level_Name.set_text( MapFileLoader._get_value(section, "name") )
+	set_portal_direction($Properties/North_Door, bool(MapFileLoader._get_value(section, "N") ) ) 
+	set_portal_direction($Properties/East_Door, bool(MapFileLoader._get_value(section, "E") ) )
+	set_portal_direction($Properties/West_Door, bool(MapFileLoader._get_value(section, "W") ) )
+	set_portal_direction($Properties/South_Door, bool(MapFileLoader._get_value(section, "S") ) )
 	$Properties/edit_portals_button.set_disabled(false)
 	
 	
@@ -160,12 +155,13 @@ func _on_button_launch_game():
 	
 
 func _on_edit_portals_button():
+	var sceneCoord = "grid:" + str(current_grid_coord.x) + "," + str(current_grid_coord.y)
 	var sceneName = $Properties/Level_Name.get_text()
 	var sceneRes = load("res://scenes/levels/" + sceneName + ".tscn")
 	if not sceneRes:
 		$Properties/error_message.visible = true;
 	else:
-		emit_signal("openPortalEditor", sceneRes)
+		emit_signal("openPortalEditor", sceneCoord, sceneName, sceneRes)
 		
 		
 		

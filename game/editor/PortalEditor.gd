@@ -10,12 +10,20 @@ func _ready():
 	
 func _on_close_button():
 	emit_signal("closePortalEditor")
+	
 
-
-func _loadScene(sceneRes):
+func _loadScene(sceneCoord, sceneName, sceneRes):
 	#CARGAR LOS NODOS QUE YA ESTEN LISTOS EN ESTA ESCENA
+	print(sceneCoord, sceneName)
+	var northPortalExist =  MapFileLoader._get_value(sceneCoord, "N") 
+	var southPortalExist =  MapFileLoader._get_value(sceneCoord, "S") 
+	var eastPortalExist =  MapFileLoader._get_value(sceneCoord, "E") 
+	var westPortalExist =  MapFileLoader._get_value(sceneCoord, "W") 
 	
 	#PREPARAR LOS LISTENERS PARA DIBUJAR PORTALES
+	if (northPortalExist):
+		#DRAW SQUARE AT POS
+		pass
 	
 	$close_button.visible = true
 	currentScene = sceneRes.instance()
