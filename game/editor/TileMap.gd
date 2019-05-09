@@ -19,20 +19,20 @@ func _ready():
 			if (MapFileLoader._has_section_key(section, "name")):
 				set_cellv(Vector2(x,y), 0)
 				_set_direction_tile( Vector2(x,y), 
-					bool(MapFileLoader._get_value(section, "N") ),
-					bool(MapFileLoader._get_value(section, "S") ),
-					bool(MapFileLoader._get_value(section, "E") ),
-					bool(MapFileLoader._get_value(section, "W") ))
+					MapFileLoader.get_portal(Vector2(x,y), "N") != null, #MapFileLoader._get_value(section, "N") ),
+					MapFileLoader.get_portal(Vector2(x,y), "S") != null, #MapFileLoader._get_value(section, "S") ),
+					MapFileLoader.get_portal(Vector2(x,y), "E") != null, #MapFileLoader._get_value(section, "E") ),
+					MapFileLoader.get_portal(Vector2(x,y), "W") != null) #MapFileLoader._get_value(section, "W") ))
 	
 	$Properties/save_button.connect("button_down", self, "_on_save_button")
 	$Properties/delete_button.connect("button_down", self, "_on_delete_button")
 	$Properties/edit_portals_button.connect("button_down", self, "_on_edit_portals_button")
 	$launch_game_button.connect("button_down", self, "_on_button_launch_game")
 	
-	$Properties/North_Door.set_text( "False" )
-	$Properties/East_Door.set_text( "False" )
-	$Properties/West_Door.set_text( "False" )
-	$Properties/South_Door.set_text( "False" ) 
+#	$Properties/North_Door.set_text( "False" )
+#	$Properties/East_Door.set_text( "False" )
+#	$Properties/West_Door.set_text( "False" )
+#	$Properties/South_Door.set_text( "False" ) 
 	
 	$Properties/error_message.visible = false;
 	
@@ -87,17 +87,6 @@ func delete_direction_tile(v):
 	var node_name = str(v.x) + "," + str(v.y)
 	if $Directions.has_node(node_name):
 		$Directions.get_node(node_name).queue_free()
-	
-
-func set_portal_direction(node, pressed):
-	node.set_text(str(pressed))
-	node.set_pressed(pressed)
-	
-func refresh_directions():
-	set_portal_direction($Properties/North_Door, false ) 
-	set_portal_direction($Properties/East_Door, false )
-	set_portal_direction($Properties/West_Door, false )
-	set_portal_direction($Properties/South_Door, false )
 
 func _load_panel_info(coord):
 	print("_load_panel_info: ", coord)
@@ -106,24 +95,31 @@ func _load_panel_info(coord):
 	if (not MapFileLoader._has_section_key(section, "name")):
 		$Properties/Level_Name.set_text( "Default" )
 		$Properties/edit_portals_button.set_disabled(true)
-		refresh_directions()
 		return
 	
 	$Properties/Level_Name.set_text( MapFileLoader._get_value(section, "name") )
-	set_portal_direction($Properties/North_Door, bool(MapFileLoader._get_value(section, "N") ) ) 
-	set_portal_direction($Properties/East_Door, bool(MapFileLoader._get_value(section, "E") ) )
-	set_portal_direction($Properties/West_Door, bool(MapFileLoader._get_value(section, "W") ) )
-	set_portal_direction($Properties/South_Door, bool(MapFileLoader._get_value(section, "S") ) )
+	#set_portal_direction($Properties/North_Door, bool(MapFileLoader._get_value(section, "N") ) ) 
+
 	$Properties/edit_portals_button.set_disabled(false)
 	
 	
 func _on_delete_button():
 	set_cellv(Vector2(current_grid_coord.x, current_grid_coord.y), -1)
 	$Properties/Level_Name.set_text( "Default" )
-	refresh_directions()
 	delete_direction_tile(Vector2(current_grid_coord.x, current_grid_coord.y))
 	
 	MapFileLoader._on_tile_delete_room(current_grid_coord)
+
+func _get_portal_values(direction):
+	if ( !$Properties.get_node(direction + "_label").get_node("Info").get_node("exists_value").is_pressed() ):
+		return null
+		
+	var portal = {}
+	portal["x"] = $Properties.get_node(direction + "_label").get_node("Info").get_node("x_value").get_text()
+	portal["y"] = $Properties.get_node(direction + "_label").get_node("Info").get_node("y_value").get_text()
+	portal["width"] = $Properties.get_node(direction + "_label").get_node("Info").get_node("width_value").get_text()
+	portal["height"] = $Properties.get_node(direction + "_label").get_node("Info").get_node("height_value").get_text()
+	return portal
 
 func _on_save_button():
 	
@@ -132,19 +128,19 @@ func _on_save_button():
 	set_cellv(Vector2(current_grid_coord.x, current_grid_coord.y), 0)
 	
 	var level_name = $Properties/Level_Name.get_text()
-	var north_door = $Properties/North_Door.is_pressed()
-	var east_door = $Properties/East_Door.is_pressed()
-	var west_door =$Properties/West_Door.is_pressed()
-	var south_door = $Properties/South_Door.is_pressed()
+	var north_portal = _get_portal_values("north")
+	var east_portal = _get_portal_values("east")
+	var west_portal = _get_portal_values("west")
+	var south_portal = _get_portal_values("south")
 	
 	_set_direction_tile(Vector2(current_grid_coord.x, current_grid_coord.y),
-						$Properties/North_Door.is_pressed(),
-						$Properties/South_Door.is_pressed(),
-						$Properties/East_Door.is_pressed(),
-						$Properties/West_Door.is_pressed())
+						north_portal != null,
+						south_portal != null,
+						east_portal != null,
+						west_portal != null)
 	
 	print("saving on: ", current_grid_coord)
-	MapFileLoader._on_tile_set_room(current_grid_coord, level_name, north_door, east_door, west_door, south_door)
+	MapFileLoader._on_tile_set_room(current_grid_coord, level_name, north_portal, east_portal, west_portal, south_portal)
 	
 func _on_button_launch_game():
 	print("LAUNCH GAME")

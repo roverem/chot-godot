@@ -8,8 +8,34 @@ Acá voy guardando como hice algunas cosas que no son tan obvias o que son de co
 - luego accedi a constantes de la misma y a un objeto custom https://gdscript.com/dictionaries
 
 
-
-
 Algunos nombres de gente que hace tutoriales GDquest, KidsCanCode, HeartBeast and Gamesfromscratch
 
 https://gdscript.com/tutorials
+
+Tutorial Saving-Loading data from INI files
+https://www.youtube.com/watch?v=XQptE6qrhKA
+https://www.youtube.com/watch?v=IrUhyf-g5hU
+
+
+State Machine
+https://www.youtube.com/watch?v=BNU8xNRk_oU
+
+
+
+
+
+······················
+
+Canales con cosas relevantes
+
+Implementaciones rapidas, tips
+https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg
+
+
+Implementaciones PLATFORMER.
+https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg
+
+
+
+Randomly Generating content
+http://pcg.wikidot.com/what-pcg-is
