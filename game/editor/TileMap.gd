@@ -27,7 +27,7 @@ func _ready():
 	$Properties/save_button.connect("button_down", self, "_on_save_button")
 	$Properties/delete_button.connect("button_down", self, "_on_delete_button")
 	$Properties/edit_portals_button.connect("button_down", self, "_on_edit_portals_button")
-	$launch_game_button.connect("button_down", self, "_on_button_launch_game")
+	
 	
 	$Properties/error_message.visible = false;
 	
@@ -138,13 +138,6 @@ func _on_save_button():
 	
 	print("saving on: ", current_grid_coord)
 	MapFileLoader.set_portals_on_room(current_grid_coord, level_name, north_portal, east_portal, west_portal, south_portal)
-	
-func _on_button_launch_game():
-	print("LAUNCH GAME")
-	var pack = preload("res://scenes/MapEditor.tscn")
-	var scene = pack.instance()
-	get_tree().get_root().add_child(scene)
-	get_parent().queue_free()
 	
 
 func _on_edit_portals_button():

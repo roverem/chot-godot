@@ -55,9 +55,7 @@ func set_portals_on_room(current_grid_coord, level_name, north_door, east_door, 
 	_map_file.set_value(section, "S", south_door)
 	_map_file.save(SAVE_PATH)
 	
-func portal_editor_set_room(grid_coord, level_name, north_door, east_door, west_door, south_door):
-	pass
-	
+
 func _on_tile_delete_room(current_grid_coord):
 	var section = "grid:" + str(current_grid_coord.x) + "," + str(current_grid_coord.y)
 	_map_file.erase_section(section)

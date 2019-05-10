@@ -74,8 +74,14 @@
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
+[node name="launch_game_button" type="Button" parent="."]
+margin_left = 300.0
+margin_top = 476.535
+margin_right = 499.0
+margin_bottom = 538.535
+text = "LAUNCH GAME"
+
 [node name="TileMap" type="TileMap" parent="."]
-editor/display_folded = true
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
@@ -87,6 +93,7 @@ texture = ExtResource( 6 )
 offset = Vector2( 32, 32 )
 
 [node name="Properties" type="Panel" parent="TileMap"]
+editor/display_folded = true
 margin_left = 684.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -200,14 +207,8 @@ custom_colors/font_color = Color( 0.937255, 0.0509804, 0.0509804, 1 )
 text = "ERROR: SCENE DOESN'T EXIST"
 autowrap = true
 
-[node name="launch_game_button" type="Button" parent="TileMap"]
-margin_left = 300.0
-margin_top = 476.535
-margin_right = 499.0
-margin_bottom = 538.535
-text = "LAUNCH GAME"
-
 [node name="PortalEditor" type="Node2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 8 )
 
 [node name="Portals" type="Node2D" parent="PortalEditor"]
@@ -230,16 +231,16 @@ label_name = "WEST"
 
 [node name="close_button" type="Button" parent="PortalEditor"]
 margin_left = 768.309
-margin_top = 54.0681
+margin_top = 140.0
 margin_right = 996.309
-margin_bottom = 120.068
+margin_bottom = 206.0
 text = "CLOSE PORTAL EDITOR"
 
 [node name="save_button" type="Button" parent="PortalEditor"]
 margin_left = 768.309
-margin_top = 130.0
+margin_top = 60.0
 margin_right = 996.309
-margin_bottom = 196.0
+margin_bottom = 126.0
 text = "SAVE PORTALS"
 
 [node name="Others" type="Node2D" parent="."]
