@@ -21,7 +21,20 @@ State Machine
 https://www.youtube.com/watch?v=BNU8xNRk_oU
 
 
+PLATFORMER DONE QUICK
+https://www.youtube.com/watch?v=NScngW8vxK8&t=2s
 
+
+TUTORIAL SOBRE COMO GUARDAR INFO EN FILESYSTEM
+https://www.youtube.com/watch?v=IrUhyf-g5hU
+
+TUTORIAL SOBRE COMO RECUPERAR DATA DEL FILESYSTEM
+https://www.youtube.com/watch?v=XQptE6qrhKA
+
+DISEÑANDO UN EDITOR DE TILES CUSTOM
+https://steemit.com/utopian-io/@sp33dy/tutorial-godot-engine-v3-gdscript-custom-tilemap
+CONTINUACION
+https://steemit.com/cn/@sp33dy/tutorial-godot-engine-v3-gdscript-custom-tilemap-scrolling
 
 
 ······················
@@ -29,7 +42,7 @@ https://www.youtube.com/watch?v=BNU8xNRk_oU
 Canales con cosas relevantes
 
 Implementaciones rapidas, tips
-https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg
+https://www.youtube.com/channel/UCaoqVlqPTH78_xjTjTOMcmQ
 
 
 Implementaciones PLATFORMER.

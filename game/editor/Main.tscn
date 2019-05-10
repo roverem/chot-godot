@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://editor/Main.gd" type="Script" id=1]
 [ext_resource path="res://editor/0.png" type="Texture" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://editor/selector.png" type="Texture" id=6]
 [ext_resource path="res://editor/Info.tscn" type="PackedScene" id=7]
 [ext_resource path="res://editor/PortalEditor.gd" type="Script" id=8]
-[ext_resource path="res://editor/compass.png" type="Texture" id=9]
-[ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=10]
+[ext_resource path="res://editor/PortalDragDrop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://editor/compass.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -74,6 +75,7 @@
 script = ExtResource( 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
@@ -89,12 +91,6 @@ margin_left = 684.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
-[node name="Level_Name" type="LineEdit" parent="TileMap/Properties"]
-margin_left = 114.936
-margin_top = 90.0
-margin_right = 314.936
-margin_bottom = 119.0
-
 [node name="level_label" type="Label" parent="TileMap/Properties"]
 margin_left = 16.0
 margin_top = 98.027
@@ -102,7 +98,28 @@ margin_right = 92.0
 margin_bottom = 112.027
 text = "LevelName:"
 
+[node name="Level_Name" type="LineEdit" parent="TileMap/Properties"]
+margin_left = 114.936
+margin_top = 90.0
+margin_right = 314.936
+margin_bottom = 119.0
+
+[node name="coord_label" type="Label" parent="TileMap/Properties"]
+margin_left = 16.0
+margin_top = 130.0
+margin_right = 92.0
+margin_bottom = 144.0
+text = "gridCoord:"
+
+[node name="coord_value" type="Label" parent="TileMap/Properties"]
+margin_left = 116.0
+margin_top = 130.0
+margin_right = 192.0
+margin_bottom = 144.0
+text = "0,0"
+
 [node name="north_label" type="Label" parent="TileMap/Properties"]
+editor/display_folded = true
 margin_left = 16.0
 margin_top = 180.0
 margin_right = 62.0
@@ -113,6 +130,7 @@ text = "NORTH"
 position = Vector2( 10, -20 )
 
 [node name="west_label" type="Label" parent="TileMap/Properties"]
+editor/display_folded = true
 margin_left = 19.1374
 margin_top = 418.0
 margin_right = 114.137
@@ -123,6 +141,7 @@ text = "WEST"
 position = Vector2( 6.86261, -20 )
 
 [node name="east_label" type="Label" parent="TileMap/Properties"]
+editor/display_folded = true
 margin_left = 19.1374
 margin_top = 339.673
 margin_right = 114.138
@@ -133,6 +152,7 @@ text = "EAST"
 position = Vector2( 6.86261, -20 )
 
 [node name="south_label" type="Label" parent="TileMap/Properties"]
+editor/display_folded = true
 margin_left = 19.1374
 margin_top = 260.0
 margin_right = 114.138
@@ -188,8 +208,25 @@ margin_bottom = 538.535
 text = "LAUNCH GAME"
 
 [node name="PortalEditor" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 8 )
+
+[node name="Portals" type="Node2D" parent="PortalEditor"]
+
+[node name="north_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
+position = Vector2( 0, 119 )
+label_name = "NORTH"
+
+[node name="south_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
+position = Vector2( 0, 196 )
+label_name = "SOUTH"
+
+[node name="east_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
+position = Vector2( 0, 273 )
+label_name = "EAST"
+
+[node name="west_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
+position = Vector2( 0, 43 )
+label_name = "WEST"
 
 [node name="close_button" type="Button" parent="PortalEditor"]
 margin_left = 768.309
@@ -198,18 +235,25 @@ margin_right = 996.309
 margin_bottom = 120.068
 text = "CLOSE PORTAL EDITOR"
 
+[node name="save_button" type="Button" parent="PortalEditor"]
+margin_left = 768.309
+margin_top = 130.0
+margin_right = 996.309
+margin_bottom = 196.0
+text = "SAVE PORTALS"
+
 [node name="Others" type="Node2D" parent="."]
 
 [node name="compass" type="Sprite" parent="Others"]
 position = Vector2( 71.4883, 536.381 )
 scale = Vector2( 1.67807, 1.67807 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 
 [node name="Comment" type="Label" parent="Others"]
 margin_left = -55.6506
 margin_top = -121.901
 margin_right = 994.349
 margin_bottom = -18.901
-custom_fonts/font = ExtResource( 10 )
+custom_fonts/font = ExtResource( 11 )
 text = "( COMENTARIOS EN 
   LA FUNCION READY )"
