@@ -4,20 +4,13 @@ signal closePortalEditor
 
 var currentScene
 var sceneCoord
-var drag_mouse = false
 
 func _ready():
 	
 	$close_button.connect("button_down", self, "_on_close_button")
-	$close_button.visible = false
 	
 	$save_button.connect("button_down", self, "_on_save_button")
-	$save_button.visible = false
 	
-	$Portals/north_portal.visible = false
-	$Portals/south_portal.visible = false
-	$Portals/east_portal.visible = false
-	$Portals/west_portal.visible = false
 	
 func _unhandled_input(event):
 	if event is InputEventKey:
@@ -84,9 +77,6 @@ func loadScene(_sceneCoord, sceneRes):
 	_set_portal($Portals/east_portal, east_portal_data)
 	_set_portal($Portals/west_portal, west_portal_data)
 	
-	$close_button.visible = true
-	$save_button.visible = true
-	
 	currentScene = sceneRes.instance()
 	add_child(currentScene)
 
@@ -107,7 +97,6 @@ func _removeScene():
 	
 	#APAGAR LOS LISTENERS PARA DIBUJAR PORTALES
 	
-	$close_button.visible = true
 	remove_child(currentScene)
 	
 	

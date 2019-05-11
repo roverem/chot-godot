@@ -82,6 +82,7 @@ margin_bottom = 538.535
 text = "LAUNCH GAME"
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
@@ -208,10 +209,11 @@ text = "ERROR: SCENE DOESN'T EXIST"
 autowrap = true
 
 [node name="PortalEditor" type="Node2D" parent="."]
-editor/display_folded = true
+visible = false
 script = ExtResource( 8 )
 
 [node name="Portals" type="Node2D" parent="PortalEditor"]
+editor/display_folded = true
 
 [node name="north_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
 position = Vector2( 0, 119 )
@@ -242,6 +244,14 @@ margin_top = 60.0
 margin_right = 996.309
 margin_bottom = 126.0
 text = "SAVE PORTALS"
+
+[node name="Comment" type="Label" parent="PortalEditor"]
+margin_left = 300.0
+margin_top = 550.0
+margin_right = 510.0
+margin_bottom = 581.0
+text = "Usar teclas N, S, W y E para prender y apagar los portales"
+autowrap = true
 
 [node name="Others" type="Node2D" parent="."]
 
