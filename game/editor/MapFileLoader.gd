@@ -45,6 +45,15 @@ func has_portal_data(gridCoord):
 	
 func get_scene_name(gridCoord):
 	return _map_file.get_value( _section_from_coord(gridCoord), "name") 
+	
+func get_starting_portal_coord():
+	var gridCoord = _map_file.get_value("start_game", "coord")
+	return Vector2(gridCoord["x"], gridCoord["y"])
+	
+func set_starting_portal_coord(start):
+	_map_file.set_value("start_game", "coord", start)
+	_map_file.save(SAVE_PATH)
+	
 
 func set_portals_on_room(current_grid_coord, level_name, north_door, east_door, west_door, south_door):
 	var section = _section_from_coord(current_grid_coord)
@@ -60,5 +69,4 @@ func _on_tile_delete_room(current_grid_coord):
 	var section = "grid:" + str(current_grid_coord.x) + "," + str(current_grid_coord.y)
 	_map_file.erase_section(section)
 	_map_file.save(SAVE_PATH)
-	
 	

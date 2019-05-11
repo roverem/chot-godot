@@ -2,7 +2,7 @@ extends TileMap
 
 var WIDTH
 var HEIGHT
-var current_grid_coord = Vector2(3,3)
+var current_grid_coord #= Vector2(2,2)
 var direction_indicator= load("res://editor/DirectionIndicator.tscn")
 
 signal openPortalEditor(sceneCoord, sceneToEdit)
@@ -30,6 +30,8 @@ func _ready():
 	
 	
 	$Properties/error_message.visible = false;
+	
+	current_grid_coord = MapFileLoader.get_starting_portal_coord()
 	
 	var cursor_pos = map_to_world(current_grid_coord)
 	$Selector.set_position(cursor_pos)

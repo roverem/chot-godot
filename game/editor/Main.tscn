@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://editor/Main.gd" type="Script" id=1]
 [ext_resource path="res://editor/0.png" type="Texture" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://editor/PortalEditor.gd" type="Script" id=8]
 [ext_resource path="res://editor/PortalDragDrop.tscn" type="PackedScene" id=9]
 [ext_resource path="res://editor/compass.png" type="Texture" id=10]
-[ext_resource path="res://assets/fonts/Minotaur 8x8 Monospaced.tres" type="DynamicFont" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "0.png 0"
@@ -81,8 +80,35 @@ margin_right = 499.0
 margin_bottom = 538.535
 text = "LAUNCH GAME"
 
+[node name="start_label" type="Label" parent="."]
+margin_left = 302.969
+margin_top = 551.138
+margin_right = 438.969
+margin_bottom = 582.138
+text = "START GAME AT      X:
+                               Y:"
+
+[node name="start_value_x" type="LineEdit" parent="start_label"]
+margin_left = 141.945
+margin_top = -6.56879
+margin_right = 199.945
+margin_bottom = 17.4312
+
+[node name="start_value_y" type="LineEdit" parent="start_label"]
+margin_left = 142.476
+margin_top = 18.3557
+margin_right = 200.476
+margin_bottom = 42.3557
+
+[node name="start_save_button" type="Button" parent="start_label"]
+margin_left = 5.9816
+margin_top = 17.0
+margin_right = 112.982
+margin_bottom = 43.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "save position"
+
 [node name="TileMap" type="TileMap" parent="."]
-editor/display_folded = true
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
@@ -209,6 +235,7 @@ text = "ERROR: SCENE DOESN'T EXIST"
 autowrap = true
 
 [node name="PortalEditor" type="Node2D" parent="."]
+editor/display_folded = true
 visible = false
 script = ExtResource( 8 )
 
@@ -259,12 +286,3 @@ autowrap = true
 position = Vector2( 71.4883, 536.381 )
 scale = Vector2( 1.67807, 1.67807 )
 texture = ExtResource( 10 )
-
-[node name="Comment" type="Label" parent="Others"]
-margin_left = -55.6506
-margin_top = -121.901
-margin_right = 994.349
-margin_bottom = -18.901
-custom_fonts/font = ExtResource( 11 )
-text = "( COMENTARIOS EN 
-  LA FUNCION READY )"
