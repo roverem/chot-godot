@@ -8,7 +8,7 @@
 [ext_resource path="res://editor/selector.png" type="Texture" id=6]
 [ext_resource path="res://editor/Info.tscn" type="PackedScene" id=7]
 [ext_resource path="res://editor/PortalEditor.gd" type="Script" id=8]
-[ext_resource path="res://editor/PortalDragDrop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://editor/Portals.tscn" type="PackedScene" id=9]
 [ext_resource path="res://editor/compass.png" type="Texture" id=10]
 
 [sub_resource type="TileSet" id=1]
@@ -81,6 +81,7 @@ margin_bottom = 538.535
 text = "LAUNCH GAME"
 
 [node name="start_label" type="Label" parent="."]
+editor/display_folded = true
 margin_left = 302.969
 margin_top = 551.138
 margin_right = 438.969
@@ -109,6 +110,7 @@ rect_scale = Vector2( 0.8, 0.8 )
 text = "save position"
 
 [node name="TileMap" type="TileMap" parent="."]
+editor/display_folded = true
 tile_set = SubResource( 1 )
 format = 1
 script = ExtResource( 5 )
@@ -235,28 +237,10 @@ text = "ERROR: SCENE DOESN'T EXIST"
 autowrap = true
 
 [node name="PortalEditor" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 script = ExtResource( 8 )
 
-[node name="Portals" type="Node2D" parent="PortalEditor"]
-editor/display_folded = true
-
-[node name="north_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
-position = Vector2( 0, 119 )
-label_name = "NORTH"
-
-[node name="south_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
-position = Vector2( 0, 196 )
-label_name = "SOUTH"
-
-[node name="east_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
-position = Vector2( 0, 273 )
-label_name = "EAST"
-
-[node name="west_portal" parent="PortalEditor/Portals" instance=ExtResource( 9 )]
-position = Vector2( 0, 43 )
-label_name = "WEST"
+[node name="Portals" parent="PortalEditor" instance=ExtResource( 9 )]
 
 [node name="close_button" type="Button" parent="PortalEditor"]
 margin_left = 768.309

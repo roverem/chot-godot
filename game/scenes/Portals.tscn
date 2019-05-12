@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Portals.gd" type="Script" id=1]
+[ext_resource path="res://scenes/PortalLevel.tscn" type="PackedScene" id=2]
+
+[node name="Portals" type="Node2D"]
+position = Vector2( -41.8929, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="north_portal" parent="." instance=ExtResource( 2 )]
+position = Vector2( -92, -140 )
+label_name = "NORTH"
+
+[node name="south_portal" parent="." instance=ExtResource( 2 )]
+position = Vector2( -92, -46.5953 )
+label_name = "SOUTH"
+
+[node name="east_portal" parent="." instance=ExtResource( 2 )]
+position = Vector2( -20, -100 )
+label_name = "EAST"
+
+[node name="west_portal" parent="." instance=ExtResource( 2 )]
+position = Vector2( -170, -100 )
+label_name = "WEST"
+[connection signal="body_entered" from="north_portal" to="." method="_on_north_portal_body_entered"]
+[connection signal="body_entered" from="south_portal" to="." method="_on_south_portal_body_entered"]
+[connection signal="body_entered" from="east_portal" to="." method="_on_east_portal_body_entered"]
+[connection signal="body_entered" from="west_portal" to="." method="_on_west_portal_body_entered"]

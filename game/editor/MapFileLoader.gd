@@ -38,7 +38,10 @@ func set_portal(gridCoord, direction, properties):
 	_map_file.save(SAVE_PATH)
 	
 func get_portal(gridCoord, direction):
-	return _map_file.get_value( _section_from_coord(gridCoord), direction)
+	if _map_file.has_section_key( _section_from_coord(gridCoord), direction ):
+		return _map_file.get_value( _section_from_coord(gridCoord), direction)
+	else:
+		return null
 	
 func has_portal_data(gridCoord):
 	return _map_file.has_section_key(_section_from_coord(gridCoord), "name")
@@ -47,11 +50,14 @@ func get_scene_name(gridCoord):
 	return _map_file.get_value( _section_from_coord(gridCoord), "name") 
 	
 func get_starting_portal_coord():
-	var gridCoord = _map_file.get_value("start_game", "coord")
+	var gridCoord = _map_file.get_value("start_game", "map_coord")
 	return Vector2(gridCoord["x"], gridCoord["y"])
 	
+func get_starting_player_position():
+	return _map_file.get_value("start_game", "player_coord")
+	
 func set_starting_portal_coord(start):
-	_map_file.set_value("start_game", "coord", start)
+	_map_file.set_value("start_game", "map_coord", start)
 	_map_file.save(SAVE_PATH)
 	
 

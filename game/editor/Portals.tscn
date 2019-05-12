@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://editor/PortalDragDrop.tscn" type="PackedScene" id=1]
+
+[node name="Portals" type="Node2D"]
+
+[node name="north_portal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 119 )
+label_name = "NORTH"
+
+[node name="south_portal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 196 )
+label_name = "SOUTH"
+
+[node name="east_portal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 273 )
+label_name = "EAST"
+
+[node name="west_portal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 43 )
+label_name = "WEST"

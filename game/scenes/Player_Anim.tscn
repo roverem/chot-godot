@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/player/tile_player.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 20 )
+extents = Vector2( 10, 12.8717 )
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -66,7 +66,7 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 11.2098 )
+position = Vector2( 0.27739, 4.66201 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

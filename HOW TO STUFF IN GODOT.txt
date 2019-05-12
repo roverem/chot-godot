@@ -49,6 +49,9 @@ Implementaciones PLATFORMER.
 https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg
 
 
-
 Randomly Generating content
 http://pcg.wikidot.com/what-pcg-is
+
+
+Lista de tutoriales 
+https://www.reddit.com/r/godot/comments/an0iq5/godot_tutorials_list_of_video_and_written/
