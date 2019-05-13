@@ -26,6 +26,10 @@ label_name = "EAST"
 position = Vector2( -170, -100 )
 label_name = "WEST"
 [connection signal="body_entered" from="north_portal" to="." method="_on_north_portal_body_entered"]
+[connection signal="body_exited" from="north_portal" to="." method="_on_north_portal_body_exited"]
 [connection signal="body_entered" from="south_portal" to="." method="_on_south_portal_body_entered"]
+[connection signal="body_exited" from="south_portal" to="." method="_on_south_portal_body_exited"]
 [connection signal="body_entered" from="east_portal" to="." method="_on_east_portal_body_entered"]
+[connection signal="body_exited" from="east_portal" to="." method="_on_east_portal_body_exited"]
 [connection signal="body_entered" from="west_portal" to="." method="_on_west_portal_body_entered"]
+[connection signal="body_exited" from="west_portal" to="." method="_on_west_portal_body_exited"]

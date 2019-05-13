@@ -3,7 +3,6 @@ extends Node2D
 var current_scene
 var current_coord
 var starting_player_position
-var is_first_load = true
 
 var current_north_portal
 var current_east_portal
@@ -40,9 +39,9 @@ func _on_player_entered_portal(direction):
 
 func _get_next_scene(direction):
 	if direction == "north":
-		current_coord.y += 1
-	elif direction == "south":
 		current_coord.y -= 1
+	elif direction == "south":
+		current_coord.y += 1
 	elif direction == "west":
 		current_coord.x -= 1
 	elif direction == "east":
@@ -69,13 +68,12 @@ func _set_portal(portal, portal_data):
 		portal.visible = false
 	
 func _set_player_starting_position(direction):
-	if is_first_load:
+	if !direction:
 		$Player.position.x = int(starting_player_position.x)
 		$Player.position.y = int(starting_player_position.y)
-		is_first_load = false
 	else:
 		var portal = _get_entering_portal(direction)
-		$Player.position.x = int(portal.x) + 50
+		$Player.position.x = int(portal.x)
 		$Player.position.y = int(portal.y)
 
 

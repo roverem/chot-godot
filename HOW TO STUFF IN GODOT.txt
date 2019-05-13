@@ -36,6 +36,9 @@ https://steemit.com/utopian-io/@sp33dy/tutorial-godot-engine-v3-gdscript-custom-
 CONTINUACION
 https://steemit.com/cn/@sp33dy/tutorial-godot-engine-v3-gdscript-custom-tilemap-scrolling
 
+Physics2D Basics
+https://www.youtube.com/watch?v=vY4I5VeQbBk
+
 
 ······················
 
