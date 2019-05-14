@@ -4,10 +4,10 @@
 [ext_resource path="res://assets/sprites/player/tile_player.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.44992, 12.8717 )
+extents = Vector2( 5.40674, 4.31083 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 8.00474
+radius = 5.50546
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
@@ -64,13 +64,15 @@ position = Vector2( 20, 30 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.90735e-006, -1.53464 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2( 4.76837e-007, 6.04895 )
+position = Vector2( -0.34103, 5.02586 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.678228, 0.678228 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 159.863, 59.4462, 25.8827, 31.3317 )

@@ -19,3 +19,5 @@ label_name = "EAST"
 [node name="west_portal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 0, 43 )
 label_name = "WEST"
+
+[node name="scene" type="Node2D" parent="."]

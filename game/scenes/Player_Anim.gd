@@ -46,6 +46,9 @@ func _physics_process(delta):
 	else:
 		play_anim("jump")
 		
+	
+	if position.y > get_viewport_rect().size.y:
+		position.y = -200
 		
 func _flip():
 	facing_right = !facing_right

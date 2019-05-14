@@ -78,7 +78,7 @@ func loadScene(_sceneCoord, sceneRes):
 	_set_portal($Portals/west_portal, west_portal_data)
 	
 	currentScene = sceneRes.instance()
-	add_child(currentScene)
+	$Portals/scene.add_child(currentScene)
 
 func _set_portal(portal, portal_data):
 	if (portal_data != null):
@@ -97,7 +97,7 @@ func _removeScene():
 	
 	#APAGAR LOS LISTENERS PARA DIBUJAR PORTALES
 	
-	remove_child(currentScene)
+	$Portals/scene.remove_child(currentScene)
 	
 	
 func _draw():
