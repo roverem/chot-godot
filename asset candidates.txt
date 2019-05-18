@@ -1,0 +1,66 @@
+Main character transforms into?
+C:\dev\humble bundle assets\sprites\fantasyenemycreatures_windows\FantasyEnemyCreatures\Wolf
+
+ALTA ANIMACION PARA PROTAGONISTA
+C:\dev\humble bundle assets\sprites\spacepackage_windows\CHAR_astronaut
+
+MISMO ANIMADOR - ZOMBIES
+C:\dev\humble bundle assets\sprites\zombiepackage_windows
+
+
+ANIMACIONES COPADAS SIDESCROLLER
+C:\dev\humble bundle assets\sprites\zombiesurvival_windows\ANIMATIONS
+
+Animaciones de efectos magicos
+C:\dev\humble bundle assets\sprites\willsmagicpixelparticleeffects_windows\wills_magic_pixel_particle_effects
+
+Props varios
+C:\dev\humble bundle assets\sprites\fantasyplatformerpixelartprops_windows\FantasyPlatformerPropsv2
+C:\dev\humble bundle assets\sprites\gamecollectablepackpixelart_windows\Collectables
+
+Nature
+C:\dev\humble bundle assets\sprites\pixelartforestkit_windows\Pixel Art Forest v1_1\Individual PNGs\Trees
+
+Backgrounds
+C:\dev\humble bundle assets\sprites\pixelartgamebackgrounds_windows
+C:\dev\humble bundle assets\sprites\textures_windows
+
+Plenty of similar side scrolling characters
+C:\dev\humble bundle assets\sprites\pixelartgamekit_windows\Pixelantasy\2. x3 Size\1. Characters
+
+
+Plenty of spaceships
+C:\dev\humble bundle assets\sprites\pixelartspaceshipsforshmup_windows
+C:\dev\humble bundle assets\sprites\pixelsidescrollerspaceships_windows\Pixel_SideScroller_Spaceships_v1.2
+
+
+Los mejores tilesets
+C:\dev\humble bundle assets\sprites\pixelarttilesetcollection_windows\Pixel Art Tileset Collection GDM
+
+Muchos objetos, requiere laburo previo
+C:\dev\humble bundle assets\sprites\superpixelobjectsanditems_windows\super_pixel_objects_and_items\spritesheet
+
+Personaje simpatico ortogonal
+C:\dev\humble bundle assets\sprites\tinyrpgdungeon_windows\tiny-RPG-dungeon-files
+
+Personaje caballero
+C:\dev\humble bundle assets\sprites\valiantknightpixelartcharacter_windows\valiant_knight
+
+
+World map onda rpg ortogonal
+C:\dev\humble bundle assets\sprites\worldmappixelarttileset_windows\world_map
+
+
+
+
+
+
+
+
+
+
+####
+personajes chiquitos
+C:\dev\humble bundle assets\sprites\zombiecharacters_windows\ANIMATIONS
+C:\dev\humble bundle assets\sprites\simplepiratecharacters_windows\ANIMATIONS
+C:\dev\humble bundle assets\sprites\simplemedievalcharacters_windows\ANIMATIONS

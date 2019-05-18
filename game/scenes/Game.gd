@@ -20,21 +20,34 @@ func _ready():
 	current_scene = pack.instance()
 	add_child(current_scene)
 	
+	$debug_text.set_text(str(current_coord))
+	
 	$Portals.emit_signal("player_start", $Player) #por ahora no se usa pero lo dejo.
 	$Portals.connect("player_enters", self, "_on_player_entered_portal")
 	
 	_setup_scene(false)
 	
 func _setup_scene(enter_direction):
-	
+	print("############ _setup_scene ############ ")
+	print("enter_direction: ", enter_direction)
+	print("current_coord: ", current_coord)
+	var scene_name = MapFileLoader.get_scene_name(current_coord)
+	var pack = load("res://scenes/levels/" + scene_name + ".tscn")
+	print("scene_name: ", scene_name)
+	remove_child(current_scene)
+	print("removed current_scene:", current_scene)
+	current_scene = pack.instance()
+	add_child(current_scene)
 	_set_portals()
 	_set_player_starting_position(enter_direction)
 	#current_scene
 	#current_coord
 	
 func _on_player_entered_portal(direction):
-	print("_on_player_entered", direction)
-	_get_next_scene(direction)
+	print("############ _on_player_entered_portal ############ ")
+	var next_scene = _get_next_scene(direction)
+	print("next scene:", next_scene, ", current_coord: ", current_coord, "direction: ", direction )
+	$debug_text.set_text(str(current_coord))
 	_setup_scene(direction)
 
 func _get_next_scene(direction):
@@ -48,6 +61,7 @@ func _get_next_scene(direction):
 		current_coord.x += 1
 	
 func _set_portals():
+	print("############ _set_portals ############ ")
 	current_north_portal = MapFileLoader.get_portal(current_coord, "N")
 	current_east_portal = MapFileLoader.get_portal(current_coord, "E")
 	current_west_portal = MapFileLoader.get_portal(current_coord, "W")
@@ -58,6 +72,11 @@ func _set_portals():
 	_set_portal($Portals/west_portal, current_west_portal)
 	_set_portal($Portals/south_portal, current_south_portal)
 	
+	print("N: ", current_north_portal)
+	print("S: ", current_south_portal)
+	print("E: ", current_east_portal)
+	print("W: ", current_west_portal)
+	
 	
 func _set_portal(portal, portal_data):
 	if (portal_data != null):
@@ -66,12 +85,17 @@ func _set_portal(portal, portal_data):
 		portal.visible = true
 	else:
 		portal.visible = false
+		portal.position.x = -10
+		portal.position.y = -10
 	
 func _set_player_starting_position(direction):
+	print("############ _set_player_starting_position ############ ")
 	if !direction:
+		print("entering from: starting position" )
 		$Player.position.x = int(starting_player_position.x)
 		$Player.position.y = int(starting_player_position.y)
 	else:
+		print("entering from: ", direction, "portal: ", _get_entering_portal(direction) )
 		var portal = _get_entering_portal(direction)
 		$Player.position.x = int(portal.x)
 		$Player.position.y = int(portal.y)

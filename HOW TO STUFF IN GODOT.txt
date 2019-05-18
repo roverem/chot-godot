@@ -40,6 +40,8 @@ Physics2D Basics
 https://www.youtube.com/watch?v=vY4I5VeQbBk
 
 
+
+
 ······················
 
 Canales con cosas relevantes
@@ -54,6 +56,9 @@ https://www.youtube.com/channel/UCLweX1UtQjRjj7rs_0XQ2Eg
 
 Randomly Generating content
 http://pcg.wikidot.com/what-pcg-is
+
+Match 3 game in godot
+https://www.youtube.com/watch?v=YhykrMFHOV4&list=PL4vbr3u7UKWqwQlvwvgNcgDL1p_3hcNn2
 
 
 Lista de tutoriales 

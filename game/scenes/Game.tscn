@@ -12,3 +12,9 @@ position = Vector2( -40, -4.1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 scale = Vector2( 2.2, 2.2 )
+
+[node name="debug_text" type="RichTextLabel" parent="."]
+margin_left = 110.0
+margin_top = 110.0
+margin_right = 850.0
+margin_bottom = 280.0
