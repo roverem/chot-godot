@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Player_Anim.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/player/tile_player.png" type="Texture" id=2]
@@ -59,6 +59,9 @@ tracks/0/keys = {
 "values": [ Rect2( -0.452103, 29.416, 29.6289, 28.9477 ), Rect2( 29.751, 28.5906, 32.6765, 30.8319 ), Rect2( 65.0627, 29.9082, 26.352, 30.0413 ), Rect2( 97.4757, 29.9082, 25.5614, 29.7778 ), Rect2( 130.416, 29.6446, 23.4533, 27.9331 ), Rect2( 163.624, 27.0127, 20.5546, 33.2035 ), Rect2( 192.875, 28.5938, 26.6155, 29.7778 ), Rect2( 224.234, 27.5397, 26.6155, 29.7778 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 64.6959, 12.7651 )
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 20, 30 )
 script = ExtResource( 1 )
@@ -75,9 +78,26 @@ shape = SubResource( 2 )
 scale = Vector2( 0.678228, 0.678228 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 159.863, 59.4462, 25.8827, 31.3317 )
+region_rect = Rect2( -1.22303, 61.8301, 28.2666, 28.6072 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
 anims/idle = SubResource( 3 )
 anims/jump = SubResource( 4 )
 anims/walk = SubResource( 5 )
+
+[node name="WallColliderRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallColliderRight"]
+position = Vector2( 24.5839, -0.438108 )
+scale = Vector2( 0.265104, 0.618592 )
+shape = SubResource( 6 )
+
+[node name="WallColliderLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallColliderLeft"]
+position = Vector2( -24.4209, -1.06615 )
+scale = Vector2( 0.265104, 0.618592 )
+shape = SubResource( 6 )
+[connection signal="body_entered" from="WallColliderRight" to="." method="_on_WallColliderRight_body_entered"]
+[connection signal="body_entered" from="WallColliderLeft" to="." method="_on_WallColliderLeft_body_entered"]
